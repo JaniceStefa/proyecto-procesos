@@ -30,13 +30,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `usuario` (
   `DNI` varchar(8) NOT NULL,
-  `Apellido Paterno` varchar(20) NOT NULL,
-  `Apellido Materno` varchar(20) NOT NULL,
+  `ApPaterno` varchar(20) NOT NULL,
+  `ApMaterno` varchar(20) NOT NULL,
   `Nombres` varchar(50) NOT NULL,
   `Dirección` varchar(100) DEFAULT NULL,
   `Telefono` varchar(9) DEFAULT NULL,
-  `E-mail` varchar(60) NOT NULL,
-  `Tipo_acceso` bit(1) NOT NULL
+  `Email` varchar(60) NOT NULL,
+  `Tipo_acceso` bit(1) NOT NULL,
+  `Contraseña` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 COMMIT;
 

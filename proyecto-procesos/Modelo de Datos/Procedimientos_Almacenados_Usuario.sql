@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-05-2018 a las 14:18:57
+-- Tiempo de generación: 02-05-2018 a las 14:34:03
 -- Versión del servidor: 5.7.19
 -- Versión de PHP: 5.6.31
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ApellidoPaterno` varchar(20) NOT NULL,
   `ApellidoMaterno` varchar(20) NOT NULL,
   `Nombres` varchar(50) NOT NULL,
-  `Dirección` varchar(100) DEFAULT NULL,
+  `Direccion` varchar(100) DEFAULT NULL,
   `Telefono` varchar(9) DEFAULT NULL,
   `Email` varchar(60) NOT NULL,
   `Contraseña` varchar(20) NOT NULL,

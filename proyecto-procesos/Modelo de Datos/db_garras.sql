@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2018 a las 14:31:21
+-- Tiempo de generación: 06-05-2018 a las 04:18:50
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -72,7 +72,7 @@ CREATE TABLE `persona` (
   `ap_materno` varchar(20) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `direccion` varchar(100) NOT NULL,
-  `e-mail` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `telefono` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

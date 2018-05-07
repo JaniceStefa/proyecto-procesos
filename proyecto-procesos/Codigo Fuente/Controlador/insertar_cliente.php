@@ -1,4 +1,5 @@
 <?php 
+	require_once("../Modelo/M_registrar_cliente.php");
 	$DNI=$_POST['dni'];
 	$ApellidoPaterno=$_POST['apPaterno'];
 	$ApellidoMaterno=$_POST['apMaterno'];
@@ -9,8 +10,7 @@
 	$Contraseña=$_POST['contraseña'];
 	$TipoAcceso=$_POST['tipoacceso'];
 	$Estado=$_POST['estado'];
-
-	require_once("../Modelo/M_registrar_cliente.php");
 	$clientes=new M_registrar_cliente();
 	$clientes->InsertarCliente($DNI,$ApellidoPaterno,$ApellidoMaterno,$Nombres,$Direccion,$Telefono,$Email,$Contraseña,$TipoAcceso,$Estado);
- ?>
+	
+	?>

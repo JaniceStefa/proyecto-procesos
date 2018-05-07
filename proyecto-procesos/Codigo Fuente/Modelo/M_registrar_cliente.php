@@ -17,7 +17,7 @@ class M_registrar_cliente {
 
     public function InsertarCliente($dni,$appaterno,$apmaterno,$nombres,$direccion,$telefono,$email,$contraseña,$tipoacceso,$estado){
         self::set_names();
-        $sql="CALL SP_A_Tabla_Usuario($dni,$appaterno,$apmaterno,$nombres,$direccion,$telefono,$email,$contraseña,$tipoacceso,$estado)";
+        $sql="CALL SP_A_Tabla_Usuario('".$dni."','".$appaterno."','".$apmaterno."','".$nombres."','".$direccion."','".$telefono."','".$email."','".$contraseña."',$tipoacceso,$estado)";
         $this->db->query($sql);
     }
     public function MostrarCliente() {

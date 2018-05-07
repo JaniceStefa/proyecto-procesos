@@ -17,16 +17,17 @@
 		<p>Contraseña:<input type="text" name="contraseña"></p>
 		<label>Tipo Acceso:</label>
 		<select name="tipoacceso">
-			<option value="c">C</option>
-			<option value="a">A</option>
+			<option value="0">Cliente</option>
+			<option value="1">Administrador</option>
 		</select>
 		<label>Estado:</label>
 		<select name="estado">
-			<option value="ac">A</option>
-			<option value="inac">I</option>
+			<option value="1">Activo</option>
+			<option value="0">Inactivo</option>
 		</select>
 		<br>
-		<input type="submit" value="Registrarse">
+		<button type="submit">Registrar</button>
+		<button type="reset">Limpiar</button>
 	</form>
 	<table border="1">
 		<tr>
@@ -48,8 +49,8 @@
                 ?>
                     <tr>
                         <td><?php echo $datos[$i]["DNI"]; ?></td>
-                        <td><?php echo $datos[$i]["ApellidoPaterno"]; ?></td>
-                        <td><?php echo $datos[$i]["ApellidoMaterno"]; ?></td>
+                        <td><?php echo $datos[$i]["ApPaterno"]; ?></td>
+                        <td><?php echo $datos[$i]["ApMaterno"]; ?></td>
                         <td><?php echo $datos[$i]["Nombres"]; ?></td>
                         <td><?php echo $datos[$i]["Direccion"]; ?></td>
                         <td><?php echo $datos[$i]["Telefono"]; ?></td>

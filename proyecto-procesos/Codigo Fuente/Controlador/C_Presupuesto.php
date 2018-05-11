@@ -10,19 +10,19 @@
 			require_once("Vista/V_Presupuesto.php");
 		}
 
-
 		public function Agregar(){
 			require_once("Modelo/M_Presupuesto.php");
 			$this->modelo=new M_Presupuesto();
 			$CodPresupuesto=$_POST['codpresupuesto'];
 			$FechaEntrega=$_POST['fechaentrega'];
 			$FechaPagoParcial=$_POST['fechapagoparcial'];
-			$PrecioParcial=$_POST['precioparcial'];
 			$PrecioTotal=$_POST['preciototal'];
+			$PrecioParcial=$PrecioTotal*0.4;
 			$CodPedido=$_POST['codigopedido'];
 			$Estado=$_POST['estado'];
 			$this->modelo->Agregar($CodPresupuesto,$PrecioTotal,$FechaEntrega,$PrecioParcial,$FechaPagoParcial,$CodPedido,$Estado);
 			header('Location: index_Presupuesto.php');
+			header_remove('Location');
 		}
 
 		public function Cambiar(){
@@ -31,8 +31,8 @@
 			$CodPresupuesto=$_POST['codpresupuesto'];
 			$FechaEntrega=$_POST['fechaentrega'];
 			$FechaPagoParcial=$_POST['fechapagoparcial'];
-			$PrecioParcial=$_POST['precioparcial'];
 			$PrecioTotal=$_POST['preciototal'];
+			$PrecioParcial=$PrecioTotal*0.4;
 			$CodPedido=$_POST['codigopedido'];
 			$this->modelo->Cambiar($CodPresupuesto,$PrecioTotal,$FechaEntrega,$PrecioParcial,$FechaPagoParcial,$CodPedido);
 		}

@@ -1,0 +1,219 @@
+﻿body {
+    background-image: url("imagenes/fondo.jpg");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.form_heading{
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+    font-size: 25px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+/*etiquetas junto a entradas*/
+.label {
+    font-size: 20px;
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+/*Estilo del formulario*/
+.formulario{
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
+
+    border-style:solid;
+    border-color:gray;
+    border-width: 2px;
+}
+/*div { // formulario anterior
+
+    border-style:solid;
+    border-color:gray;
+    border-width: 2px;
+    margin-top: 5px; 
+}*/
+/*Columna de los items: 25% width*/
+.item{
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+/*item anterior
+.item{
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    
+}*/
+/*Columma de los datos: 75% width*/
+.datos{
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+/*Estilo boton submit /cancelar */
+.boton{
+    background-color: #2E86C1;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.boton:hover{
+    background-color: #45B39D;
+    color: white;
+}
+/* Checkbox*/
+.container{
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.container input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px; 
+}
+/*Select, Numero y fecha*/
+input[type=number], input[type=date] , select{
+    font-size: 15px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.terms{
+    margin-top: 100px;
+}
+
+/*modal*/
+
+.containerDatos h1 {
+  text-align: center;
+  font-size: 25px;
+  margin: 10px 1px 3px;
+}
+.containerDatos p {
+  text-align: center;
+  font-size: 17px;
+  margin: 0 15px 50px;
+  padding: 15px;
+}
+.confirm{
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  background: #E2E2E2;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid white;
+}
+.confirm button {
+  background: transparent;
+  color: #1678E5;
+  height: 48px;
+  font-size: 1rem;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+}
+.confirm button:nth-of-type(1) {
+  border-top: 1px solid #B4B4B4;
+  border-right: 1px solid #B4B4B4;
+  left: 0;
+}
+.confirm button:nth-of-type(2) {
+  border-top: 1px solid #B4B4B4;
+  right: 0;
+}
+.confirm button:focus,
+.confirm button:hover {
+  font-weight: bold;
+  background: #EFEFEF;
+}
+
+/* Position the close button */
+.containerX {
+    text-align: center;
+    margin: 5px 0 12px 0;
+    position: relative;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 10px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}

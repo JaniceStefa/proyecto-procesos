@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2018 a las 20:28:56
+-- Tiempo de generación: 08-06-2018 a las 17:14:35
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.0.29
 
@@ -26,8 +26,12 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_A_TABLA_DETALLEPEDIDO` (IN `_cod_pedido` INT(3), IN `_cod_producto` VARCHAR(10), IN `_talla` VARCHAR(20), IN `_cod_material` INT(3), IN `_cantidad` INT(3), IN `_fecha_requerida` DATETIME, IN `_dni_cliente` VARCHAR(8))  INSERT INTO detallepedido (cod_pedido, cod_producto, talla, cod_material, cantidad, fecha_requerida, DNI_cliente)
-values (_cod_pedido, _cod_producto, _talla, _cod_material, _cantidad, _fecha_requerida, _dni_cliente)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_A_TABLA_DETALLEPEDIDO` (IN `_cod_producto` INT(3), IN `_talla` VARCHAR(20), IN `_cod_material` INT(3), IN `_cantidad` INT(3), IN `_fecha_requerida` DATETIME, IN `_dni_cliente` VARCHAR(8))  BEGIN 
+CALL SP_A_TABLA_PEDIDO();
+SET @cod = LAST_INSERT_ID();
+INSERT INTO detallepedido (cod_pedido, cod_producto, talla, cod_material, cantidad, fecha_requerida, DNI_cliente)
+VALUES (@cod,_cod_producto, _talla, _cod_material, _cantidad, _fecha_requerida, _dni_cliente);
+END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_A_TABLA_MATERIAL` (IN `_descripcion` VARCHAR(20), IN `_precio` DECIMAL(6,2))  INSERT INTO material(descripcion, precio, estado) values(_descripcion, _precio, 1)$$
 
@@ -47,9 +51,13 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_A_TABLA_PRODUCTO` (IN `_descripcion` VARCHAR(25), IN `_imagen` TEXT)  INSERT INTO producto(descripcion, imagen, estado)VALUES(_descripcion, _imagen, 1)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_A_TABLA_USUARIO` (IN `_DNI` VARCHAR(8), IN `_contrasenia` VARCHAR(10), IN `_tipo_acceso` BIT(1), IN `_estado` BIT(1))  BEGIN
-INSERT INTO usuario(DNI,contraseña,tipo_acceso,estado) 
+INSERT INTO usuario(DNI,contrasenia,tipo_acceso,estado) 
 VALUES (_DNI,_contrasenia,_tipo_acceso,_estado);
 END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_CONSULTA_PRECIO` (IN `_cod_material` INT, IN `_cod_producto` INT)  NO SQL
+SELECT precio_mat, precio_prod from material inner join producto 
+WHERE cod_material = _cod_material && cod_producto = _cod_producto$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_C_TABLA_MATERIAL` (IN `_cod_material` INT(3), IN `_descripcion` VARCHAR(20), IN `_precio` DECIMAL(6,2))  UPDATE material
 set descripcion = _descripcion, precio=_precio
@@ -73,7 +81,7 @@ WHERE cod_producto = _cod_producto$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_C_TABLA_USUARIO` (IN `_DNI` VARCHAR(8), IN `_contrasenia` VARCHAR(10), IN `_tipo_acceso` BIT(1), IN `_cod_usuario` VARCHAR(10))  BEGIN
 UPDATE presupuesto
-set DNI=_DNI,contraseña=_contrasenia,tipo_acceso=_tipo_acceso
+set DNI=_DNI,contrasenia=_contrasenia,tipo_acceso=_tipo_acceso
 WHERE cod_usuario=_cod_usuario;
 END$$
 
@@ -91,11 +99,9 @@ SET estado=0
 WHERE DNI=_DNI;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_E_TABLA_PRESUPUESTO` (IN `_cod_presupuesto` VARCHAR(10), IN `_cod_pedido` VARCHAR(10), IN `_estado` CHAR(8))  BEGIN
-UPDATE presupuesto
-SET estado=_estado
-WHERE cod_presupuesto=_cod_presupuesto and cod_pedido=_cod_pedido;
-END$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_E_TABLA_PRESUPUESTO` (IN `_cod_presupuesto` VARCHAR(10))  UPDATE presupuesto
+SET estado="0"
+WHERE cod_presupuesto=_cod_presupuesto$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_E_TABLA_PRODUCTO` (IN `_cod_producto` INT)  UPDATE producto
 SET estado=0
@@ -107,7 +113,11 @@ SET estado=0
 WHERE cod_usuario=_cod_usuario;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_M_TABLA_DETALLEPEDIDO` ()  SELECT * FROM detallepedido$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_M_TABLA_DETALLEPEDIDO` ()  SELECT cod_pedido, descripcion_prod, talla, descripcion_mat, cantidad, fecha_requerida, DNI_cliente
+FROM detallepedido INNER JOIN producto, material
+WHERE detallepedido.cod_producto = producto.cod_producto &&
+detallepedido.cod_material = material.cod_material
+ORDER BY fecha_requerida ASC$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_M_TABLA_MATERIAL` ()  SELECT cod_material, descripcion, precio FROM material WHERE estado = 1$$
 
@@ -129,6 +139,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_M_TABLA_PRODUCTO` ()  SELECT * F
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_M_TABLA_USUARIO` ()  BEGIN
 SELECT*FROM usuario ORDER BY cod_usuario LIMIT 150;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_VALIDAR_LOGIN` (IN `_DNI` VARCHAR(8), IN `_contasenia` VARCHAR(10))  BEGIN
+SELECT*FROM usuario where DNI=_DNI and contrasenia=_contrasenia;
 END$$
 
 DELIMITER ;
@@ -157,21 +171,10 @@ CREATE TABLE `detallepedido` (
 
 CREATE TABLE `material` (
   `cod_material` int(3) NOT NULL,
-  `descripcion` varchar(20) NOT NULL,
-  `precio` decimal(4,2) NOT NULL,
+  `descripcion_mat` varchar(20) NOT NULL,
+  `precio_mat` decimal(4,2) NOT NULL,
   `estado` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `material`
---
-
-INSERT INTO `material` (`cod_material`, `descripcion`, `precio`, `estado`) VALUES
-(1, 'Algodon', '10.00', b'1'),
-(2, 'Sintético', '10.00', b'1'),
-(3, 'Dryfit', '10.00', b'1'),
-(4, 'Suplex', '10.00', b'1'),
-(5, 'Polyster', '10.00', b'1');
 
 -- --------------------------------------------------------
 
@@ -226,24 +229,11 @@ CREATE TABLE `presupuesto` (
 
 CREATE TABLE `producto` (
   `cod_producto` int(3) NOT NULL,
-  `descripcion` varchar(25) NOT NULL,
+  `descripcion_prod` varchar(25) NOT NULL,
   `imagen` text NOT NULL,
-  `estado` bit(1) NOT NULL
+  `estado` bit(1) NOT NULL,
+  `precio_prod` decimal(4,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `producto`
---
-
-INSERT INTO `producto` (`cod_producto`, `descripcion`, `imagen`, `estado`) VALUES
-(1, 'Buzos', '', b'1'),
-(2, 'Casacas', '', b'1'),
-(3, 'Polos', '', b'1'),
-(4, 'Shorts', '', b'1'),
-(5, 'CD1: Buzos-Casacas', '', b'1'),
-(6, 'CD2: Polos-Shorts', '', b'1'),
-(7, 'CD3: Conjunto Completo', '', b'1'),
-(8, 'CD3: Conjunto Comple', '', b'0');
 
 -- --------------------------------------------------------
 
@@ -253,10 +243,10 @@ INSERT INTO `producto` (`cod_producto`, `descripcion`, `imagen`, `estado`) VALUE
 
 CREATE TABLE `usuario` (
   `DNI` varchar(8) NOT NULL,
-  `cod_usuario` varchar(10) NOT NULL,
-  `contraseña` varchar(10) NOT NULL,
+  `contrasenia` varchar(10) NOT NULL,
   `tipo_acceso` bit(1) NOT NULL,
-  `estado` bit(1) NOT NULL
+  `estado` bit(1) NOT NULL,
+  `cod_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -277,7 +267,7 @@ ALTER TABLE `detallepedido`
 --
 ALTER TABLE `material`
   ADD PRIMARY KEY (`cod_material`),
-  ADD KEY `precio` (`precio`);
+  ADD KEY `precio` (`precio_mat`);
 
 --
 -- Indices de la tabla `pedido`
@@ -325,13 +315,19 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `cod_pedido` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_pedido` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
   MODIFY `cod_producto` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

@@ -17,7 +17,7 @@
 		<input type="number" name="precioparcial">
 		<label>Fecha de entrega (finalizada)</label>
 		<input type="date" name="fechaentrega">
-		<span class="icon-printer"></span><a href="../assets/pdf/imprimir.php">Imprimir Ficha Presupuesto</a>
+		<span class="icon-printer"></span><a href="../assets/pdf/imprimir_presupuesto.php">Imprimir Ficha Presupuesto</a>
 		<button type="submit" name="generar" class="btnGenerar">Enviar</button>	
 		<button type="reset" class="btnCancelar">Cancelar</button>
 	</form>

@@ -16,11 +16,12 @@
 		<input type="text" name="fechaentrega" value="<?php echo $fechaentrega=$_GET['fe']; ?>" >
 		<label>Fecha Pago Parcial</label>
 		<input type="text" name="fechapagoparcial" value="<?php echo $fechapagoparcial=$_GET['fpp']; ?>" >
-		<label>Precio Total</label>
-		<input type="number" name="preciototal" value="<?php echo $preciototal=$_GET['pt']; ?>" >
+		<label>Precio Total (S/.)</label>
+		<input type="number" name="preciototal" min="1.00" value="<?php echo $preciototal=$_GET['pt']; ?>" >
 		<label>Código Pedido</label>
 		<input type="text" name="codigopedido" value="<?php echo $cod_pedido=$_GET['cpe']; ?>">
 		<button type="submit" name="actualizar" class="btnActualizar">Guardar Cambios</button>	
+		<button name="cancel" class="btnActualizar">Cancelar</button>	
 	</form>
 </body>
 </html>

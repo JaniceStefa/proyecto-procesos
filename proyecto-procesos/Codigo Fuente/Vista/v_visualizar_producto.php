@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Catalogo de Producto</title>
-	<link rel="stylesheet" href="css/v_visualizar_producto.css">
+	<link rel="stylesheet" href="../assets/css/v_visualizar_producto.css">
 </head>
 <body>
 	<div class="maintitulo">

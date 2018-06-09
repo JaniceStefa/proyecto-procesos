@@ -20,6 +20,8 @@
 			$this->db->query($sql);
 			//$this->db=null;
 		}
+
+
 		public function Mostrar(){
 
 			$sql=$this->db->query("CALL SP_M_TABLA_PRESUPUESTO");
@@ -29,6 +31,7 @@
 
 			return $this->presupuestos;
 		}
+
 		public function Eliminar($cod_presupuesto,$cod_pedido,$estado){
 			$sql="CALL SP_E_TABLA_PRESUPUESTO('".$cod_presupuesto."')";
 			$this->db->query($sql);

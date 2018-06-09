@@ -8,7 +8,7 @@
 <body>
 
 <div class="formulario">  
- <form action = "../controlador/c_consultas.php" method = "post" name = "frm">
+ <form action = "./index_pedido.php" method = "post" name = "frm">
 
     <div class="form_heading">Ficha de Pedido</div> 
 

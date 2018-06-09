@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+	<head>
 	<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Garras | Pagina Oficial</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,7 @@
 	<!-- Date Picker -->
 	<link rel="stylesheet" href="../assets/PaginaOficial/css/bootstrap-datepicker.css">
 
-</head>
+	</head>
 	<body>
 		
 	<div class="colorlib-loader"></div>
@@ -53,7 +53,7 @@
 								<li><a href="../vista/V_ficha_pedido.php"><i class="icon-shopping-cart"></i> Pedidos </a></li>
 								<?php 
 								session_start();
-								include "../modelo/conectar_bd.php";
+								include "../modelo/serv.php";
 							    if (isset($_SESSION['user'])){
 								?>
 								<li><a href="../controlador/c_validar_logout.php""><i class="icon-user2"></i> Cerrar Sesión </a></li>

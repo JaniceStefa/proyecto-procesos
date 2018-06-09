@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
 	class M_Persona{
 		//0 es un cliente
 		//1 es administrador
@@ -17,7 +18,7 @@
 			
 			$this->db->query($sql);
 			$this->db->query($sql1);
-			$this->db=null;
+			
 		}
 		public function Cambiar($DNI,$ap_paterno,$ap_materno,$nombre,$direccion,$email,$telefono,$estado){
 			

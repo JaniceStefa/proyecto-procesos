@@ -39,9 +39,7 @@ Librerias:
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-
-    <a class="navbar-brand" href="../index.php" >Empresa Garras - Administrador <i class="fa fa-fw fa-home"></i></a>
-
+    <a class="navbar-brand" href="../vista/Tablero_Admi.php">Administrador</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -71,31 +69,18 @@ Librerias:
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAbas" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-truck"></i>
-            <span class="nav-link-text">Abastecimiento</span>
-          </a>
-           <ul class="sidenav-second-level collapse" id="collapseAbas">
-            <li>
-              <a href="../controlador/index_producto.php">Productos</a>
-            </li>
-            <li>
-              <a href="../controlador/index_material.php">Materiales</a>
-            </li>
-          </ul>
-        </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-calendar"></i>
-            <span class="nav-link-text">Herramientas</span>
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Componentes</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="../controlador/navbar.html">Seguimiento</a>
+              <a href="../controlador/navbar.php">Seguimiento</a>
             </li>
             <li>
-              <a href="../controlador/cards.html">Calendario</a>
+              <a href="../controlador/cards.php">Calendario</a>
             </li>
           </ul>
         </li>      
@@ -158,9 +143,9 @@ Librerias:
                 <?php
                   foreach($this->modelo->Mostrar_Pedido() as $registro){
                     echo "<tr class='contenidotable'><td>".$registro["cod_pedido"]. "</td>";
-                    echo "<td>".$registro["descripcion_prod"]. "</td>";
+                    echo "<td>".$registro["cod_producto"]. "</td>";
                     echo "<td>".$registro["talla"]. "</td>";
-                    echo "<td>".$registro["descripcion_mat"]. "</td>";
+                    echo "<td>".$registro["cod_material"]. "</td>";
                     echo "<td>".$registro["cantidad"]. "</td>";
                     echo "<td>".$registro["fecha_requerida"]. "</td>";
                     echo "<td>".$registro["DNI_cliente"]. "</td>";

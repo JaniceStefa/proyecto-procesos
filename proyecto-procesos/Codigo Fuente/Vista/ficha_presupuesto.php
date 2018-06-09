@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+	<head>
 	<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Garras | Pagina Menu</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,7 @@
 	<!-- Date Picker -->
 	<link rel="stylesheet" href="../assets/PaginaOficial/css/bootstrap-datepicker.css">
 
-</head>
+	</head>
 	<body>
 		
 	<div class="colorlib-loader"></div>
@@ -65,7 +65,7 @@
 			</div>
 		</nav>
 
-		<!--<aside id="colorlib-hero" class="breadcrumbs">
+		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
 			   	<li style="background-image: url(../assets/PaginaOficial/images/cover.jpg);">
@@ -83,7 +83,7 @@
 			   	</li>
 			  	</ul>
 		  	</div>
-		</aside>-->
+		</aside>
 
 		<div class="colorlib-shop">
 			<div class="container">
@@ -114,15 +114,11 @@
 							<ul>
 								<li>
 									<span>Costo Parcial (a Pagar)</span> 
-									<span><?php
-									/*foreach($this->modelo->GenerarPresupuesto() as $registro){
-					                    echo $registro["precio_parcial"];
-					                  }*/
-									?></span>
+									<span>$100.00</span>
 								<li><span>Fecha de Entrega (finalizada)</span> 
-									<span>3/06/2018</span></li>
+									<span>$0.00</span></li>
 								<li><span>Costo Total</span> 
-									<span>$280.00</span></li>
+									<span>$180.00</span></li>
 
 								<span class="icon-printer"></span><a href="../assets/pdf/imprimir_presupuesto.php"> Imprimir Ficha Presupuesto</a>
 								<br></br>

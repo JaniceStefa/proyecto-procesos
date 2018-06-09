@@ -35,9 +35,7 @@ Librerias:
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-
-    <a class="navbar-brand" href="../index.php" >Empresa Garras - Administrador <i class="fa fa-fw fa-home"></i></a>
-
+    <a class="navbar-brand" href="../vista/Tablero_Admi.php">Administrador</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -67,31 +65,18 @@ Librerias:
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAbas" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-truck"></i>
-            <span class="nav-link-text">Abastecimiento</span>
-          </a>
-           <ul class="sidenav-second-level collapse" id="collapseAbas">
-            <li>
-              <a href="../controlador/index_producto.php">Productos</a>
-            </li>
-            <li>
-              <a href="../controlador/index_material.php">Materiales</a>
-            </li>
-          </ul>
-        </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-calendar"></i>
-            <span class="nav-link-text">Herramientas</span>
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Componentes</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="../controlador/navbar.html">Seguimiento</a>
+              <a href="../controlador/navbar.php">Seguimiento</a>
             </li>
             <li>
-              <a href="../controlador/cards.html">Calendario</a>
+              <a href="../controlador/cards.php">Calendario</a>
             </li>
           </ul>
         </li>      
@@ -137,7 +122,6 @@ Librerias:
                   <th>Precio Total</th>
                   <th>Código Pedido</th>
                   <th>Actualizar</th>
-                  <th>Eliminar</th>
                   
                 </tr>
               </thead>
@@ -150,7 +134,6 @@ Librerias:
                   <th>Precio Total</th>
                   <th>Código Pedido</th>
                   <th>Actualizar</th>
-                  <th>Eliminar</th>
                   
                 </tr>
               </tfoot>
@@ -163,9 +146,9 @@ Librerias:
                     echo "<td>".$registro["precio_parcial"]. "</td>";
                     echo "<td>".$registro["precio_total"]. "</td>";
                     echo "<td>".$registro["cod_pedido"]. "</td>";
-                    echo "<td><button type='submit' name='actualizar' class='btnModificar'><a class='btn' href='../vista/V_actualizar_presupuesto.php?c=".$registro['cod_presupuesto']." && cpe=".$registro['cod_pedido']." && fe=".$registro['fecha_entrega']." && fpp=".$registro['fecha_pago_parcial']." && pp=".$registro['precio_parcial']." && pt=".$registro['precio_total']."'>Actualizar</a></button></td>";
+                    echo "<td><button type='submit' name='actualizar' class='btnModificar'><a class='btn' href='Vista/V_actualizar_presupuesto.php?c=".$registro['cod_presupuesto']." && cpe=".$registro['cod_pedido']." && fe=".$registro['fecha_entrega']." && fpp=".$registro['fecha_pago_parcial']." && pp=".$registro['precio_parcial']." && pt=".$registro['precio_total']."'>Actualizar</a></button></td>";
                     
-                    echo "<td><button type='submit' name='eliminar' class='btnEliminar'><a class='btn' href='../vista/V_eliminar_presupuesto.php?c=".$registro['cod_presupuesto']."'>Eliminar</a></button></td>";
+                    //echo "<td><button type='submit' name='eliminar' class='btnEliminar'><a class='btn' href='Vista/V_eliminar_presupuesto.php?c=".$registro['cod_presupuesto']."'>Eliminar</a></button></td>";
                   }
                 ?>
               </tbody>

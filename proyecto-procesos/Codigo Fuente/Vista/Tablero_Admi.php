@@ -17,16 +17,14 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-
-    <a class="navbar-brand" href="../index.php" >Empresa Garras - Administrador <i class="fa fa-fw fa-home"></i></a>
-
+    <a class="navbar-brand" href="../vista/Tablero_Admi.html">Administrador</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="../vista/Tablero_Admi.php">
+          <a class="nav-link" href="../vista/Tablero_Admi.html">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Tablero</span>
           </a>
@@ -49,24 +47,11 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAbas" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-truck"></i>
-            <span class="nav-link-text">Abastecimiento</span>
-          </a>
-           <ul class="sidenav-second-level collapse" id="collapseAbas">
-            <li>
-              <a href="../controlador/index_producto.php">Productos</a>
-            </li>
-            <li>
-              <a href="../controlador/index_material.php">Materiales</a>
-            </li>
-          </ul>
-        </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-calendar"></i>
-            <span class="nav-link-text">Herramientas</span>
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Componentes</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
@@ -130,16 +115,6 @@
               <div class="mr-5">Presupuestos</div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="../controlador/index_Presupuesto.php">
-              <span class="float-left">Ver Detalles</span>
-            </a>
-          </div> 
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-secondary o-hidden h-100">
-            <div class="card-body">
-              <div class="mr-5">Productos</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="../controlador/index_producto.php">
               <span class="float-left">Ver Detalles</span>
             </a>
           </div> 

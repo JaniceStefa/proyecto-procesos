@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  include "../modelo/conectar_bd.php";
+  include "../modelo/serv.php";
   if(isset($_SESSION["user"])){
     echo '<script> window.location="../controlador/index_persona.php"; </script>';
   }
@@ -30,7 +30,7 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Inicio de Sesión</div>
       <div class="card-body">
-        <form method="post" action = "../controlador/index_persona.php">
+        <form method="post" action = "../modelo/validar_login.php">
           <div class="form-group">
             <label for="exampleInputEmail1">Número DNI</label>
             <input name ="user" autocomplete="off" class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Ingrese N° DNI" required>

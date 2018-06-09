@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+	<head>
 	<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Garras | Pagina Oficial</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,7 @@
 	<!-- Date Picker -->
 	<link rel="stylesheet" href="../assets/PaginaOficial/css/bootstrap-datepicker.css">
 
-</head>
+	</head>
 	<body>
 		
 	<div class="colorlib-loader"></div>
@@ -52,8 +52,8 @@
 								<li><a href="../vista/V_contacto.php">Contactanos</a></li>
 								<li class="active"><a href="../vista/V_ficha_pedido.php"><i class="icon-shopping-cart"></i> Pedidos </a></li>
 								<?php 
-								//session_start();
-								include "../modelo/conectar_bd.php";
+								session_start();
+								include "../modelo/serv.php";
 							    if (isset($_SESSION['user'])){
 								?>
 								<li><a href="../controlador/c_validar_logout.php""><i class="icon-user2"></i> Cerrar Sesión </a></li>
@@ -68,7 +68,7 @@
 			</div>
 		</nav>
 
-		<!--<aside id="colorlib-hero" class="breadcrumbs">
+		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
 			   	<li style="background-image: url(../assets/PaginaOficial/images/cover.jpg);">
@@ -86,7 +86,7 @@
 			   	</li>
 			  	</ul>
 		  	</div>
-		</aside>-->
+		</aside>
 
 		<div class="colorlib-shop">
 			<div class="container">
@@ -119,7 +119,7 @@
 			                  	<label for="prodTipo"> Productos: </label>
 			                    <div class="form-field">
 			                     	<i class="icon icon-arrow-down3"></i>
-			                        <select name="producto" id="producto" class="form-control" required>
+			                        <select name="producto" id="producto" class="form-control">
 				                      	<option value="">Elige una opción </option>
 						                <option value="1">Buzos</option> 
 						                <option value="2">Casacas</option> 
@@ -137,7 +137,7 @@
 			               </div>
 			               <div class="col-md-12">
 			                  <div class="form-group">
-			                  	<label for="selTalla"> Tallas: </label>
+			                  	<label for="matTipo"> Materiales: </label>
 			                    <div class="form-field">
 			                     	<label class="container">	
 							            <input type="checkbox" name="tallas" value="S" checked>  S</label>
@@ -156,7 +156,7 @@
 			                  	<label for="matTipo"> Materiales: </label>
 			                    <div class="form-field">
 			                     	<i class="icon icon-arrow-down3"></i>
-			                        <select name="material" id="material" class="form-control" required>
+			                        <select name="material" id="material" class="form-control">
 				                      	<option value="">Elige una opción </option>
 						                <option value="1">Algodón </option> 
 						                <option value="2">Sintético</option> 
@@ -170,7 +170,7 @@
 			              <div class="form-group">
 									<div class="col-md-5">
 										<label for="cant">Cantidad</label>
-										<input type="number" name="cantidad" id="cantidad" size=3 maxlength=3 min="1" max="500" class="form-control" required />
+										<input type="number" name="cantidad" id="cantidad" size=3 maxlength=3 min="1" max="500" class="form-control" />
 									</div>
 						  </div>
 						  <div class="form-group">
@@ -182,7 +182,7 @@
 			               <div class="form-group">
 										<div class="col-md-12">
 											<div class="checkbox">
-												<a href = "V_terminos_condiciones.php" >Leer los terminos y condiciones</a><br /><br />
+												<a href = "terminos_condiciones.php" >Leer los terminos y condiciones</a><br /><br />
 											   <label><input type="checkbox" name="aceptoterms" required /> Acepto los términos y condiciones</label>
 											</div>
 										</div>

@@ -29,9 +29,6 @@ Librerias:
   <link href="../assets/TableroAdmi/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template -->
   <link href="../assets/TableroAdmi/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Page level plugin CSS-->
-  <link href="../assets/TableroAdmi/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
   <!-- Custom styles for this template-->
   <link href="../assets/TableroAdmi/sb-admin.css" rel="stylesheet">
 </head>
@@ -39,9 +36,7 @@ Librerias:
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-
-    <a class="navbar-brand" href="../index.php" >Empresa Garras - Administrador <i class="fa fa-fw fa-home"></i></a>
-
+    <a class="navbar-brand" href="../vista/Tablero_Admi.php">Administrador</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -71,24 +66,11 @@ Librerias:
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAbas" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-truck"></i>
-            <span class="nav-link-text">Abastecimiento</span>
-          </a>
-           <ul class="sidenav-second-level collapse" id="collapseAbas">
-            <li>
-              <a href="../controlador/index_producto.php">Productos</a>
-            </li>
-            <li>
-              <a href="../controlador/index_material.php">Materiales</a>
-            </li>
-          </ul>
-        </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-calendar"></i>
-            <span class="nav-link-text">Herramientas</span>
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Componentes</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
@@ -164,6 +146,8 @@ Librerias:
                     echo "<td>".$registro["direccion"]."</td>";
                     echo "<td>".$registro["email"]."</td>";
                     echo "<td>".$registro["telefono"]."</td>";
+                    
+                    //echo "<td><button type='submit' name='actualizar'><a href='V_actualizar_persona.php?d=".$registro['DNI']." &&ap=".$registro['ap_paterno']." &&am=".$registro['ap_materno']." &&nom=".$registro['nombre']." &&dir=".$registro['direccion']." &&em=".$registro['email']." &&tel=".$registro['telefono']." &&st=".$registro['estado']."'>Actualizar</a></button></td>";
                     }
                 ?>
               </tbody>
@@ -200,12 +184,8 @@ Librerias:
     <!-- Bootstrap core JavaScript-->
     <script src="../assets/TableroAdmi/jquery/jquery.min.js"></script>
     <script src="../assets/TableroAdmi/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="../assets/TableroAdmi/datatables/jquery.dataTables.js"></script>
-    <script src="../assets/TableroAdmi/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="../assets/TableroAdmi/js/sb-admin.min.js"></script>
-
   </div>
 </body>
 

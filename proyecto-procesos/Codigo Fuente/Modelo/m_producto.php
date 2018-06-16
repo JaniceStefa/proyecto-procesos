@@ -10,13 +10,13 @@
 			$this->productos=array();
 		}
 
-		public function Agregar($descripción,$imagen){
-			$sql="CALL SP_A_TABLA_PRODUCTO('".$descripción."','".$imagen ."')";
+		public function Agregar($descripcion,$imagen){
+			$sql="CALL SP_A_TABLA_PRODUCTO('".$descripcion."','".$imagen ."')";
 			$this->db->query($sql);
 		}
 
-		public function Cambiar($descripción,$imagen){
-			$sql="CALL SP_C_TABLA_PRODUCTO('".$descripción."','".$imagen ."')";
+		public function Cambiar($descripcion,$imagen){
+			$sql="CALL SP_C_TABLA_PRODUCTO('".$descripcion."','".$imagen ."')";
 			$this->db->query($sql);
 			//$this->db=null;
 		}

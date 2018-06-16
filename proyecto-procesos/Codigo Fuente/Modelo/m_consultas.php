@@ -10,7 +10,7 @@ class M_Consultas {
     }
     public function ConsultaPrecio($Producto, $Material) 
     {  
-        $sql = $this->db->query("CALL SP_M_CONSULTA($Producto, $Material)");
+        $sql = $this->db->query("CALL SP_CONSULTA_PRECIO($Producto, $Material)");
         //$sql = $this->db->query("SELECT precio_mat, precio_prod from material inner join producto WHERE cod_material = 2 && cod_producto = 3");
         //$this->db->query($sql);
 

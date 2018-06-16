@@ -2,6 +2,7 @@
     class C_Pedido_Presupuesto{
 
         private $modelo;
+        private $db;
         public function GenerarPresupuesto() {
             require_once("../modelo/m_consultas.php");
             $this->modelo=new M_Consultas();
@@ -11,9 +12,10 @@
             $Material = $_POST['material'];
             $cantidad=$_POST['cantidad'];
             $FechaRequerida = $_POST['fecharequerida'];
-
-            // cantidada de productos fabricados en un dia 
-            $cant_dia = 20;
+            $precio_mat = 0;
+            $precio_prod=0;
+            // cantidad de productos fabricados en un dia 
+            $cant_dia = 50;
 
             //calculo para determinar fecha de entrega
             $dias_prod = round($cantidad/$cant_dia);
@@ -25,7 +27,7 @@
                 $precio_mat = $registro["precio_mat"];
                 $precio_prod = $registro["precio_prod"];
             }
-            $otros = 0.75;// distintos a tela 
+            $otros = 0.50;// distintos a tela 
             $precio_talla = 0;  
             switch ($Talla) {
                 case 'S': $precio_talla = 2; break;
@@ -36,7 +38,7 @@
            
             $cost_material = $precio_mat + $precio_talla + $otros;
 
-            // costos de mano de obra
+            // costos de mano de obra  180
             $costo_mano_diario = 10;
             $cost_mano = $dias_prod * $costo_mano_diario;
 
@@ -54,8 +56,9 @@
             //costo total 
             $costo_parcial = 0.25 * $costo_total;
 
-            require_once("../vista/v_ficha_pedido-otro.php");
-            echo "material: ";echo $precio_mat;
+            //require_once("../vista/v_ficha_pedido-otro.php");
+            
+            /*echo "material: ";echo $precio_mat;
             echo " dias: ";echo $dias_prod;
             echo " fecha ..: ";echo $Fecha_Entrega;
             echo " indirectos: "; echo $costo_indirecto;
@@ -67,9 +70,26 @@
             echo " costo unitario: "; echo $costo_unitario;
             echo " costo total: ";echo $costo_total;
             echo " costo parcial: ";echo $costo_parcial;
+            */
+
+           // $img = $myFile->getRelativePathName();
+            //return View::make('index', compact('img'));
+            //$lista = array('fecha' => 1, 'parcial' => $costo_parcial, 'total' => $costo_total );
+            //return $lista;
+
             /*$this->modelo->Agregar($cod_presupuesto,$precio_total,$fecha_entrega,$precio_parcial,$fecha_pago_parcial,$cod_pedido);
             header('Location: index_Presupuesto.php');
             header_remove('Location');*/
+            return $costo_parcial;
+        }
+        public function Presupuesto()
+        {
+            $sql=$this->db->query("CALL SP_M_TABLA_PRESUPUESTO");
+            while($filas=$sql->fetch(PDO::FETCH_ASSOC)){
+                $this->presupuestos[]=$filas;
+            }
+
+            return $this->presupuestos;
         }
     }  
 

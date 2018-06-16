@@ -28,14 +28,15 @@
 			require_once("../modelo/m_producto.php");
 			$this->modelo=new M_Producto();
 
-			$nombre=$_FILES['imagen']['name'];
+			$Descripcion=$_POST['descripcion'];
+
+			$nombre=$Descripcion;
 			$tipo=$_FILES['imagen']['type'];
 			$tamanio=$_FILES['imagen']['size'];
 
-			$carpeta_destino=$_SERVER['DOCUMENT_ROOT'] . '/Proyecto/assets/imagenes/';
+			$carpeta_destino=$_SERVER['DOCUMENT_ROOT'] . '/proyecto-procesos/codigo Fuente/assets/imagenes/';
 			move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino.$nombre);
-
-			$Descripcion=$_POST['descripcion'];
+			
 			$this->modelo->Agregar($Descripcion,$nombre);
 		}
 
